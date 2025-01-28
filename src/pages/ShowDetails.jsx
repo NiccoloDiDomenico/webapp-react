@@ -6,11 +6,11 @@ import DetailsMovieCard from "../components/DetailsMovieCard";
 
 function ShowDetails() {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
-    const { id } = useParams();
+    const { slug } = useParams();
     const [movie, setMovie] = useState(null);
 
     useEffect(() => {
-        axios.get(`${backendUrl}/movies/${id}`).then((resp) => {
+        axios.get(`${backendUrl}/movies/${slug}`).then((resp) => {
             console.log(resp.data);
             setMovie(resp.data)
         })

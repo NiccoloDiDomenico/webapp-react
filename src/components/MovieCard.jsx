@@ -15,7 +15,7 @@ function MovieCard(props) {
                         <h6 className="card-text">{props.movie.director}</h6>
                         <p className="card-text">{props.movie.genre}</p>
                         <p className="card-text">{props.movie.release_year}</p>
-                        <Link to={`/movies/${props.movie.id}`} className="btn btn-outline-secondary btn-sm">Show details</Link>
+                        <Link to={`/movies/${props.movie.slug}`} className="btn btn-outline-secondary btn-sm">Show details</Link>
                     </div>
                 </div>
             </div>
