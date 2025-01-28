@@ -6,7 +6,9 @@ function AppLayout() {
     return (
         <>
             <AppHeader />
-            <Outlet />
+            <main className="bg-secondary">
+                <Outlet />
+            </main>
             <AppFooter />
         </>
     )

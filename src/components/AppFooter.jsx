@@ -1,6 +1,7 @@
 function AppFooter() {
     return (
-        <footer>Footer section</footer>
+        <footer className="bg-secondary">
+        </footer>
     )
 }
 
