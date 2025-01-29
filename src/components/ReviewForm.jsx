@@ -19,7 +19,7 @@ function ReviewForm(props) {
 
     return (
         <>
-            <form className="d-flex flex-column align-items-center" >
+            <form className="d-flex flex-column align-items-center" onSubmit={() => props.handleSubmitReview(formValue, setFormValue, defaultFormValue)}>
                 <div className="input-group w-75 mb-3">
                     <span className="input-group-text w-25">Name</span>
                     <input type="text" className="form-control" id="name" value={formValue.name} name="name" onChange={handleFormValue} />

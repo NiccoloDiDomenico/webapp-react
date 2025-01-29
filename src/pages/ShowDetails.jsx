@@ -10,12 +10,26 @@ function ShowDetails() {
     const { slug } = useParams();
     const [movie, setMovie] = useState(null);
 
-    useEffect(() => {
+    function getMovies() {
         axios.get(`${backendUrl}/movies/${slug}`).then((resp) => {
-            // console.log(resp.data);
             setMovie(resp.data)
         });
+    };
+
+    useEffect(() => {
+        getMovies()
     }, []);
+
+    function storeReview(formValue, setFormValue, defaultFormValue) {
+        // console.log("submit review", movie.id, formValue);
+        event.preventDefault()
+
+        axios.post(`${backendUrl}/movies/${movie.id}/reviews`, formValue).then((resp) => {
+            // console.log(resp);
+            setFormValue(defaultFormValue);
+            getMovies();
+        });
+    };
 
     return (
         <>
@@ -27,6 +41,7 @@ function ShowDetails() {
                             <h1 className="text-center">Details</h1>
                             <DetailsMovieCard key={movie.id} movie={movie} />
                         </section>
+
                         {/* Reviews */}
                         <section className="container pb-2">
                             <h2 className="text-center pb-4">Reviews</h2>
@@ -43,10 +58,11 @@ function ShowDetails() {
                                 }
                             </div>
                         </section>
+
                         {/* Add review */}
                         <section className="container py-4">
                             <h2 className="text-center pb-4">Add your review</h2>
-                            <ReviewForm />
+                            <ReviewForm handleSubmitReview={storeReview} />
                         </section>
                     </>
                 )
